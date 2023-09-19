@@ -19,11 +19,18 @@ T Calculator<T>::multiply(T a, T b)
 template <typename T>
 T Calculator<T>::divide(T a, T b)
 {
-    if (b == 0)
+    try
     {
-        throw "Division by zero";
+        if (b == 0)
+        {
+            throw "Division by zero";
+        }
+        return a / b;
     }
-    return a / b;
+    catch (const char *msg)
+    {
+        throw msg;
+    }
 }
 
 template <typename T>
@@ -35,11 +42,18 @@ T Calculator<T>::percentage(T a, T b)
 template <typename T>
 T Calculator<T>::squareRoot(T a)
 {
-    if (a < 0)
+    try
     {
-        throw "Square root of a negative number";
+        if (a < 0)
+        {
+            throw "Square root of a negative number";
+        }
+        return std::sqrt(a);
     }
-    return std::sqrt(a);
+    catch (const char *msg)
+    {
+        throw msg;
+    }
 }
 
 template <typename T>
@@ -57,19 +71,33 @@ T Calculator<T>::power(T base, T exponent)
 template <typename T>
 T Calculator<T>::naturalLog(T a)
 {
-    if (a <= 0)
+    try
     {
-        throw "Natural logarithm of a non-positive number";
+        if (a <= 0)
+        {
+            throw "Natural logarithm of a non-positive number";
+        }
+        return std::log(a);
     }
-    return std::log(a);
+    catch (const char *msg)
+    {
+        throw msg;
+    }
 }
 
 template <typename T>
 T Calculator<T>::logBase10(T a)
 {
-    if (a <= 0)
+    try
     {
-        throw "Logarithm base 10 of a non-positive number";
+        if (a <= 0)
+        {
+            throw "Logarithm base 10 of a non-positive number";
+        }
+        return std::log10(a);
     }
-    return std::log10(a);
+    catch (const char *msg)
+    {
+        throw msg;
+    }
 }
