@@ -4,7 +4,7 @@
 
 int main()
 {
-    Calculator<double> calculator;
+    Calculator<double> *calculator = new Calculator<double>;
 
     double num1, num2;
     assert(num2 == 0); // asserting
@@ -28,34 +28,34 @@ int main()
         double result;
         if (operation == "+")
         {
-            result = calculator.add(num1, num2);
+            result = calculator->add(num1, num2);
         }
         else if (operation == "-")
         {
-            result = calculator.subtract(num1, num2);
+            result = calculator->subtract(num1, num2);
         }
         else if (operation == "*")
         {
-            result = calculator.multiply(num1, num2);
+            result = calculator->multiply(num1, num2);
         }
         else if (operation == "/")
         {
             assert(num2 != 0);
-            result = calculator.divide(num1, num2);
+            result = calculator->divide(num1, num2);
         }
         else if (operation == "%")
         {
             assert(num2 != 0);
-            result = calculator.percentage(num1, num2);
+            result = calculator->percentage(num1, num2);
         }
         else if (operation == "sqrt")
         {
             assert(num1 >= 0);
-            result = calculator.squareRoot(num1);
+            result = calculator->squareRoot(num1);
         }
         else if (operation == "square")
         {
-            result = calculator.square(num1);
+            result = calculator->square(num1);
         }
         else if (operation == "^")
         {
@@ -64,11 +64,11 @@ int main()
         else if (operation == "ln")
         {
             assert(num1 > 0);
-            result = calculator.naturalLog(num1);
+            result = calculator->naturalLog(num1);
         }
         else if (operation == "log")
         {
-            result = calculator.logBase10(num1);
+            result = calculator->logBase10(num1);
         }
         else
         {
@@ -82,6 +82,8 @@ int main()
     {
         std::cerr << "Error: " << msg << std::endl;
     }
+
+    delete calculator;
 
     return 0;
 }
